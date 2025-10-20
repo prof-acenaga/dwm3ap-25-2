@@ -1,0 +1,11 @@
+display:
+- FullScreen: (pantalla completa), ocupa toda la pantalla y no se ve nada del navegador.
+- standalone: se verá como una app independiente, puede tener su propia ventana, propio icono del lanzador, etc. se excluyen elementos de intrfaz para controlar navegacion.
+- minimal-ui: se mostrara como una appa independiente, pero tendrá un minimo de elementos de interfaz para controlar navegacion.
+- browser: la app se abre en el navegador predeterminado
+
+Orientation:
+- any: permie que la aplicacion se muestre como lo haya configurado en usuario.
+- natural: muestra la aplicacion que considere de forma natural para el dispositivo
+- portrait: muestra la plicacion con mas alto que ancho.
+- landscape: muestra la aplicacion con mas ancho que alto.
