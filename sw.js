@@ -54,3 +54,35 @@ self.addEventListener('fetch', (e)=>{ // Agrega un detector de eventos al evento
     )
 })
 
+//notificaciones push
+self.addEventListener('push', (e)=>{
+    let data = e.data ? e.data.text() : 'no vino texto';
+    let options = {
+        body: data,
+        icon: 'assets/icons/android-icon-192x192.png',
+        badge: 'assets/icons/android-icon-48x48.png',
+        image: 'assets/img/No-Image-Placeholder.svg.png',
+        vibrate: [100, 50, 100],
+        renotify: true,
+        actions: [
+            {action: 'SI', title: 'Ver detalle'},
+            {action: 'NO', title: 'Cerrar'}
+        ],
+        tag: 'notificacion-sample'
+        
+    };
+    e.waitUntil(
+        self.registration.showNotification('Notificacion desde SW', options)
+    );
+});
+
+self.addEventListener('notificationclick', (e)=>{
+    console.log('notificacion click: ', e);
+    if(e.action === 'SI'){
+        console.log('el usuario quiere ver el detalle');
+        clients.openWindow('https://www.google.com');
+    }else{
+        console.log('el usuario no quiere ver el detalle');
+    }
+    e.notification.close();
+});
