@@ -43,3 +43,11 @@
     right: 25px;
     display: none;
 }
+
+
+.offline{
+    background-color: orange;
+    a{
+        color:white
+    }
+}

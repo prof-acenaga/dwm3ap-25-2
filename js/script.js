@@ -27,6 +27,49 @@ if('serviceWorker' in navigator){
             });
         }
 
+        //Detectar estado de conexion
+        (()=>{
+            const header = document.querySelector('#main-header');
+
+            const estado = () => {
+                
+
+                if(navigator.onLine){
+                    header.classList.remove('offline');
+                    console.log('Hay red')
+                }else{
+                    header.classList.add('offline');
+                    console.log('sin conexion');
+
+                }
+
+
+            }
+            window.addEventListener('online', estado)
+            window.addEventListener('offline', estado)
+        })();
+
+        //API share
+        (()=>{
+            document.querySelector('#share').addEventListener('click', (e) => {
+                if(navigator.share){
+                    navigator.share({
+                        title: 'MTG Finder',
+                        text: 'La mejor app finder',
+                        url: 'https://mtg-finder.netlify.app/'
+                    })
+                    .then(()=>{
+                        console.log('Se compartio')
+                    })
+                    .catch((error)=>{
+                        console.log(error)
+                    })
+                }
+
+            })
+        })()
+
+
     });
 }
 
